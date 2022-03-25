@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class ="border border-dark container float">
+
+<h1 class="display-3">Ultimate Pokemon Database</h1>
+
+<p class = "lead">Welcome to the Ultimate Pokemon Database! Here, you can view more than 700 Pokemon, from generation one up to generation six. Click on any Pokemon to view its information, such as generation, type, height, weight, and more! </p>
+<p class = "lead"> <b> You can also search for a specific pokemon <a href="{{ url_for('search') }}">here.</a></p></b>
+
+
+
+
+<ul class="list-group align-items-center">
+    {% for pair in pairs %}
+   
+    <li class= "border border-dark display-5 d-inline list-group-item d-flex justify-content-between align-items-center"  style= "width:80%"><span class="badge badge-dark badge-pill"> {{ pair[2] }}</span>
+        <a href="{{ url_for( 'detail', num=pair[2] ) }}" class="list-group-item list-group-item-action"> <img class= "shadow rounded-2 border border-dark align-items-center d-inline-flex img-fluid img-thumbnail float-left" style = "width: 25%" src="{{ url_for('static', filename='images/pokemon_jpg/' + pair[1]) }}" alt="Pokemon portrait not available">
+  
+       <b style= "padding:5%;">{{ pair[0] }}</b>
+        </a> </li> 
+    {% endfor %}
+    </ul>
+</div>
+
+
+{% endblock %}

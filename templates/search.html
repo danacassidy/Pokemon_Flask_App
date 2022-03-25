@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block styles %}
+{{ super() }}
+	
+{% endblock %}
+
+
+{% block title %}
+Pokemon!
+{% endblock %}
+
+
+{% block content %}
+
+<div class= "border border-dark container">
+        <div class="row">
+        <div class="col-md-10 col-lg-8 mx-lg-auto mx-md-auto">
+
+        <b> <h1 class="pt-5 pb-2">Search through 700+ Pokemon!</h1></b>
+        <h3> We have Pokemon from generations one through six.</h3>
+        <p> Pro tip: Type the full name of the with uppercase, ex: Pikachu.</p>
+
+        <h4 class="pt-5 border-dark"><b> {{ wtf.quick_form(form) }}</b><h4>
+
+        <b> <h4 class="pt-5 border-dark"><strong>{{ message }}</strong></h4></b>
+
+    <h2 class = "p-3 text-left lead">Unsure what to search? View all 800+ Pokemon <a href="{{ url_for('index') }}">here.</a></h2>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class= "border border-dark pokemon_container" style="width:90%">
+	
+<b><h1 class="shadow text-left" >{{ poke['name'] }}</h1></b>
+
+<img class="p-3 shadow float-center align-items-center rounded-2 border border-dark"  src="{{ url_for('static', filename='images/pokemon_jpg/' + poke['image']) }}" alt="Pokemon portrait not available">
+
+<!-- NOTE the pattern for pointing to a file inside the static folder -->
+
+<ul class="shadow border border-dark list-group">
+	<li class= "list-group-item d-flex justify-content-between align-items-right"><b>Name:</b> {{ poke['name'] }}</li>
+	<li class= "list-group-item d-flex justify-content-between align-items-right"> <b>Pokedex number:</b> {{ poke['pokedex_number'] }} </li>
+	<li class= "list-group-item d-flex justify-content-between align-items-right"> <b>Primary type:</b> {{ poke['type1'] }} </li>
+	<li class= "list-group-item d-flex justify-content-between align-items-right"> <b>Classification:</b> {{ poke['classification'] }} </li>
+	<li class= "list-group-item d-flex justify-content-between align-items-right"> <b>Generation:</b> {{poke['generation']}}</li>
+	<li class= "list-group-item d-flex justify-content-between align-items-right"> <b>Height:</b> {{poke['height_m']}} metres</li>
+	<li class= "list-group-item d-flex justify-content-between align-items-right"> <b>Weight:</b> {{poke['weight_kg']}} kilograms. </li>
+	<li class= "list-group-item d-flex justify-content-between align-items-right"> <b>Capture rate:</b> {{poke['capture_rate']}}</li>
+	<li class= "list-group-item d-flex justify-content-between align-items-right"> <b>Base attack of:</b> {{poke['attack']}} </li>
+	<li class= "list-group-item d-flex justify-content-between align-items-right"> <b>Base defense of:</b> {{poke['defense']}} </li>
+	{% if poke['is_legendary'] == "1" %}
+		<li class= "list-group-item d-flex justify-content-between align-items-right"> <b>Is it legendary:</b> Yes </li>
+	{% elif poke['is_legendary'] != "1" %}
+		<li class= "list-group-item d-flex justify-content-between align-items-right"> <b>Is it legendary:</b> No </li>
+	{% endif %}
+</ul>
+
+
+
+
+
+
+</div>
+<i><h3 class = " pb-3 text-center lead"><a href="{{ url_for('search') }}">Return to the search</a> </h3></i>
+
+<i><h3 class = "pt-3 pb-3 text-center lead"><a href="{{ url_for('index') }}">Return to the full list</a></h3></i>
+
+{% endblock %}
